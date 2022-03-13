@@ -117,7 +117,33 @@ router.route('/movies')
         if(!req.body.title){
             res.json({success:false, message: "Title is required."});
         }else{      // data provided
-            
+            if (req.body.newTitle){    
+                Movie.findOneAndUpdate(req.body.title, req.body.newTitle, function(err, movie) {
+                    if(err){
+                        res.status(403).json({success:false, message: "Error: Could not make a change."});
+                    }else{
+                        res.status(200).json({success: true, message: "Title has been updated successfully"});
+                    }
+                });
+            }
+            if (req.body.newYear){    
+                Movie.findOneAndUpdate(req.body.year, req.body.newYear, function(err, movie) {
+                    if(err){
+                        res.status(403).json({success:false, message: "Error: Could not make a change."});
+                    }else{
+                        res.status(200).json({success: true, message: "Released year has been updated successfully"});
+                    }
+                });
+            }
+            if (req.body.newGenre){    
+                Movie.findOneAndUpdate(req.body.genre, req.body.newGenre, function(err, movie) {
+                    if(err){
+                        res.status(403).json({success:false, message: "Error: Could not make a change."});
+                    }else{
+                        res.status(200).json({success: true, message: "Genre has been updated successfully"});
+                    }
+                });
+            }
         }
     })
 
