@@ -111,6 +111,25 @@ router.route('/movies')
             
         }
     })
+
+    // deleting a movie
+    .delete(authJwtController.isAuthenticated, function(req, res) {
+        if(!req.body.title){
+            res.json({success:false, message: "Please provide a title to delete"});
+        }else{
+            Movie.findOneAndDelete(req.body.title, function(err, movie) {
+                if(err){
+                    res.status(403).json({success:false, message: "Error: Could not delete this movie"});
+                }else if(!movie){
+                    res.status(403).json({success: false, message: "Error: This movie's title does not exist."});
+                }else {
+                    res.status(200).json({success: true, message: "Movie was deleted successfuly"});
+                }
+             })
+         }
+
+    })
+
     // getting a movie
     .get(authJwtController.isAuthenticated, function (req, res) {
         Movie.find({}, function(err, movies) {
