@@ -130,7 +130,7 @@ router.route('/movies')
                 if(err){
                     res.status(403).json({success:false, message: "Error: Could not delete this movie"});
                 }else if(!movie){
-                    res.status(403).json({success: false, message: "Error: This movie's title does not exist."});
+                    res.status(403).json({success: false, message: "Error: No movie matches this movie, does not exist."});
                 }else {
                     res.status(200).json({success: true, message: "Movie was deleted successfuly"});
                 }
