@@ -109,7 +109,12 @@ router.route('/movies')
             })
             
         }
-     });
+     })
+    .get(authJwtController.isAuthenticated, function (req, res) {
+        Movie.find({}, function(err, movies) {
+            res.json({Movie: movies});
+        })
+    });
 
 app.use('/', router);
 app.listen(process.env.PORT || 8080);
