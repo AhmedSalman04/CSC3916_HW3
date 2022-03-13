@@ -112,6 +112,15 @@ router.route('/movies')
         }
     })
 
+    // updating a movie
+    .put(authJwtController.isAuthenticated, function(req, res) {
+        if(!req.body.title){
+            res.json({success:false, message: "Please provide a title to update"});
+        }else{      // data provided
+            
+        }
+    })
+
     // deleting a movie
     .delete(authJwtController.isAuthenticated, function(req, res) {
         if(!req.body.title){
