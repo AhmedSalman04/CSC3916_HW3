@@ -87,6 +87,7 @@ router.post('/signin', function (req, res) {
 
 // movie routes
 router.route('/movies')
+    // saving a movie
     .post(authJwtController.isAuthenticated, function (req, res) {
         console.log(req.body);
         if (!req.body.title || !req.body.year || !req.body.genre || !req.body.actors || req.body.actors < 3) {
@@ -109,7 +110,8 @@ router.route('/movies')
             })
             
         }
-     })
+    })
+    // getting a movie
     .get(authJwtController.isAuthenticated, function (req, res) {
         Movie.find({}, function(err, movies) {
             res.json({Movie: movies});
