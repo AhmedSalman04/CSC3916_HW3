@@ -89,7 +89,7 @@ router.post('/signin', function (req, res) {
 router.route('/movies')
     // saving a movie
     .post(authJwtController.isAuthenticated, function (req, res) {
-        console.log(req.body);
+        //console.log(req.body);
         if (!req.body.title || !req.body.year || !req.body.genre || !req.body.actors || req.body.actors < 3) {
             res.json({success: false, message: "An input should contian: Title, year released, Genre, and 3 Actors"});
         } else {
