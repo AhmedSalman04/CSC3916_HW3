@@ -196,10 +196,10 @@ router.route('/reviews')
         } else {
              Movie.findOne({ title: req.body.title }, (err, movie) => {
                 if (err) {
-                    return res.status(403).json({ success: false, message: "Error creating review" });
+                    return res.status(403).json({ success: false, message: "Error adding a review" });
                 } else {
                     if (!movie) {
-                        return res.status(403).json({ success: false, message: "Unable to find movie title" });
+                        return res.status(403).json({ success: false, message: "movie title not found." });
                     } else {
                         var review = new Review();
                         review.title = req.body.title;
@@ -210,7 +210,7 @@ router.route('/reviews')
                             if (err) {
                                 return res.json(err);
                             }
-                            res.json({success: true, msg: 'Review saved.'});
+                            res.json({success: true, msg: 'Review was saved successfuly.'});
                         })
                     }
                 }
