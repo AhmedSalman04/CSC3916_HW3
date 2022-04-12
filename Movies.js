@@ -17,7 +17,7 @@ var MovieSchema = new Schema({
     title: {type: String, required: true},
     year: {type: String, required: true},
     genre: {type: String, required: true, enum:['Action', 'Adventure',  'Comedy',  'Drama',  'Fantasy',  'Horror',  'Mystery',  'Thriller', 'Western'] },
-    actors: {type: Array, required: true, items: {actorName: String, characterName: String}, minItems: 3}
+    actors: {type: Array, required: true, items: {actorName: String, characterName: String}, minItems: 3},
     imageURL: {type: String, required: true}
 
 });
